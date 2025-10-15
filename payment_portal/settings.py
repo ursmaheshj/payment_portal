@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-90n22^blp543_(zqdfqllycn)&(&op6vn_vdoosh3zd+e2!sgq
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['paymentportal-production-ad02.up.railway.app']
+ALLOWED_HOSTS = ['paymentportal-production-ad02.up.railway.app','127.0.0.1']
 CSRF_TRUSTED_ORIGINS = ['https://paymentportal-production-ad02.up.railway.app']
 
 # Application definition

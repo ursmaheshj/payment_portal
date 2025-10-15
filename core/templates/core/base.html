@@ -36,6 +36,13 @@
             </li>
             {% endif %}
         </ul>
+
+        <ul class="navbar-nav ml-auto">
+            {% if user.is_authenticated %}
+            <li class="nav-item">
+                <span class="nav-link">Hello, {{ user.username }}</span>
+            </li>
+            {% endif %}
     </nav>
     <!-- /.navbar -->
 
@@ -68,6 +75,10 @@
                         </a>
                     </li>
                 </ul>
+
+                <!--  -->
+                
+                <!--  -->
             </nav>
         </div>
     </aside>
