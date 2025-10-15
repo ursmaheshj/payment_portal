@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-90n22^blp543_(zqdfqllycn)&(&op6vn_vdoosh3zd+e2!sgq
 DEBUG = True
 
 ALLOWED_HOSTS = ['paymentportal-production-ad02.up.railway.app']
-
+CSRF_TRUSTED_ORIGINS = ['https://paymentportal-production-ad02.up.railway.app']
 
 # Application definition
 
