@@ -1,0 +1,39 @@
+{% extends 'core/base.html' %}
+{% block content %}
+<h2 class="mb-3">Make a Payment</h2>
+<div class="row g-3">
+    {% for service in services %}
+    <div class="col-12 col-md-6">
+        <div class="card shadow-sm mb-3" style="border-left: 5px solid #1976d2;">
+            <div class="card-body">
+                <h5 class="card-title mb-1">{{ service.category.name }} - {{ service.description }}</h5>
+                <div class="mb-2"><span class="badge bg-primary">Year: {{ service.year }}</span></div>
+                <ul class="list-unstyled mb-2">
+                    <li><strong>Due Amount:</strong> <span class="text-danger">{{ service.due_amount }}</span></li>
+                    <li><strong>Due Date:</strong> {{ service.due_date }}</li>
+                    <li><strong>Total Paid:</strong> <span class="text-success">{{ service.get_total_paid }}</span></li>
+                    <li><strong>Remaining:</strong> <span class="badge bg-warning text-dark">{{ service.get_remaining }}</span></li>
+                    <li><strong>Status:</strong> <span class="badge {% if service.status == 'full' %}bg-success{% elif service.status == 'partial' %}bg-warning text-dark{% else %}bg-danger{% endif %}">{{ service.status|title }}</span></li>
+                </ul>
+                <form method="post" class="row g-2">
+                    {% csrf_token %}
+                    <input type="hidden" name="service" value="{{ service.id }}">
+                    <div class="col-12 mb-2">
+                        <label for="amount-{{ service.id }}" class="form-label">Amount</label>
+                        <input type="number" step="0.01" name="amount" id="amount-{{ service.id }}" class="form-control" required {% if service.status == 'full' %}disabled{% endif %}>
+                    </div>
+                    <div class="col-12">
+                        <button type="submit" class="btn btn-primary w-100" {% if service.status == 'full' %}disabled{% endif %}>Pay</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% if selected_service %}
+<script>
+    document.getElementById('amount-{{ selected_service.id }}').focus();
+</script>
+{% endif %}
+{% endblock %}
