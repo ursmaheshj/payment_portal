@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-90n22^blp543_(zqdfqllycn)&(&op6vn_vdoosh3zd+e2!sgq
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['paymentportal-production-ad02.up.railway.app']
 
 
 # Application definition
